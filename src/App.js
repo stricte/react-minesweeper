@@ -5,7 +5,7 @@ import Board from './components/Board';
 
 class App extends Component {
   static defaultProps = {
-    size: 5,
+    size: 10,
     beforeStartText: 'Start when you are ready',
     winText: 'You won!',
     defeatText: 'You lost!',
