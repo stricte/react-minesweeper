@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/react-minesweeper/static/js/runtime~main.1c80af3c.js"
   },
   {
-    "revision": "5e2039fcff26fba0382e847876b646ff",
+    "revision": "b453c6cec6ee6d68ac4e143031336d63",
     "url": "/react-minesweeper/index.html"
   }
 ];
