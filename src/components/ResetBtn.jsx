@@ -18,8 +18,6 @@ const ResetBtn = styled.a`
 
   outline: 0;
 
-  -webkit-appearance: button;
-
   font-size: 13px;
   line-height: 1.5384616;
   border-radius: 3px;
