@@ -5,18 +5,19 @@ import mine from './../mine.png';
 
 const Square = styled.div`
   margin: 1px;
-  background: #AC9891;
+  background: #F16163;
   width: 25px;
   height: 25px;
   float: left;
+  padding-top: 3px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  color: #597FA0;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 
   ${props => props.discovered && css`
-    background: #E5DADA;
-    color: #91A5AC;
+    background: #F7D8B6;
     box-shadow: none;
   `}
 
@@ -33,7 +34,7 @@ const Square = styled.div`
   `}
 
   ${props => props.boomed && css`
-    background-color: red;
+    background-color: #FA1C28;
   `}
 
   ${props => props.discovered && props.hasNum && css`
