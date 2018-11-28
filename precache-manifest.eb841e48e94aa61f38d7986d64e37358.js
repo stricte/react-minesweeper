@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "7b27719b3208a18ef5f1",
-    "url": "/react-minesweeper/static/css/main.b89f8dce.chunk.css"
+    "revision": "d7e9e801a739f7cf840d",
+    "url": "/react-minesweeper/static/css/main.8252e89f.chunk.css"
   },
   {
-    "revision": "7b27719b3208a18ef5f1",
-    "url": "/react-minesweeper/static/js/main.7b27719b.chunk.js"
+    "revision": "d7e9e801a739f7cf840d",
+    "url": "/react-minesweeper/static/js/main.d7e9e801.chunk.js"
   },
   {
     "revision": "f9d8d94592249a6b2f17",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/react-minesweeper/static/js/runtime~main.1c80af3c.js"
   },
   {
-    "revision": "9efe5efa581252253b41345ffda6e70d",
+    "revision": "437dda74495daa8f131bda4919ca4ad3",
     "url": "/react-minesweeper/index.html"
   }
 ];
