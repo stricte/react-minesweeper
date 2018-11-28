@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { Matrix, Coords } from '../Matrix';
 
 import Cell from './Cell';
-import Container from './Container';
-import Row from './Row';
+import BoardContainer from './BoardContainer';
+import MatrixRow from './MatrixRow';
 import ResetBtn from './ResetBtn';
 
 class Board extends Component {
@@ -16,6 +16,8 @@ class Board extends Component {
     this.onCellDiscover = this.onCellDiscover.bind(this);
     this.onCellFlag = this.onCellFlag.bind(this);
     this.onReset = this.onReset.bind(this);
+
+    this.interval = null;
   }
 
   finished(){
@@ -33,8 +35,24 @@ class Board extends Component {
   init(){ 
     return {
       started: false,
-      matrix: this.generateMatrix()
+      matrix: this.generateMatrix(),
+      gameSecondsCount: 0
     };
+  }
+
+  startTimer(){
+    if(!this.interval){
+      this.interval = setInterval(() => {
+        this.setState((prevState) => {
+          return {gameSecondsCount: prevState.gameSecondsCount + 1};
+        })
+      }, 1000);
+    }
+  }
+
+  stopTimer(){
+    clearInterval(this.interval);
+    this.interval = null;
   }
 
   defeat(){
@@ -48,28 +66,48 @@ class Board extends Component {
   onCellDiscover(coords){
     if(this.finished()) return;
 
+    this.startTimer();
     this.setState({ started: true });
-
+  
     this.state.matrix.onCellDiscover(coords);
+    
+    if(this.finished()) this.stopTimer();
   }
 
   onCellFlag(coords){
     if(this.finished()) return;
     
+    this.startTimer();
     this.setState({ started: true });
 
     this.state.matrix.onCellFlag(coords);
+
+    if(this.finished()) this.stopTimer();
   }
 
   onReset(){
+    this.stopTimer();
     this.setState(this.init());
   }
 
   renderHeader() {
-    if(this.win()) return <h4 style={{color: 'green'}}>{this.props.winText}</h4>;
-    if(this.defeat()) return <h4 style={{color: 'red'}}>{this.props.defeatText}</h4>
-    if(!this.state.started) return <h4>{this.props.beforeStartText}</h4>
-    return <h4>{this.state.matrix.minesLeft()}</h4>;
+   return (
+     <div style={{clear: 'both', marginTop: '10px', marginBottom: '10px', width: '90%'}}>
+      <div><h4>React Minesweeper</h4></div>
+      <div>
+        <h4>          
+        </h4>
+      </div>
+      <div style={{width: '100%'}}>
+        <div style={{float: 'left'}}>
+          Mines left: {this.state.matrix.minesLeft()}
+        </div>
+        <div style={{float: 'right'}}>
+          Timer: {this.state.gameSecondsCount}
+        </div>
+      </div>
+     </div>
+   );
   }
 
   renderBoard(){
@@ -98,7 +136,7 @@ class Board extends Component {
       });
 
       return (
-        <Row key={y}>{cells}</Row>
+        <MatrixRow key={y}>{cells}</MatrixRow>
       )
     })
   }
@@ -106,11 +144,11 @@ class Board extends Component {
   render() {
     return (
       <React.Fragment>
-        <Container>
+        <BoardContainer>
           {this.renderHeader()}
           {this.renderBoard()}
           <ResetBtn onClick={this.onReset}>{this.props.resetText}</ResetBtn>
-        </Container>
+        </BoardContainer>
       </React.Fragment>
     );
   }

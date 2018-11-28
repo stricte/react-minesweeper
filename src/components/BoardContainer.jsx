@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
+const BoardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: 100vh;
+  max-width: 275px;
+  min-width: 275px;
 `;
 
-export default Container;
+export default BoardContainer;
